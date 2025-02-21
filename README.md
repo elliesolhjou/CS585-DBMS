@@ -108,99 +108,95 @@ BUSINESS → MONTHLY_EXPENSES (1:M) - A business incurs multiple monthly expense
 
 BUSINESS → MONTHLY_REPORTWHAT IS THIS  (1:M)  - A business generates multiple monthly reports.
 
-BUSINESS → SCHEDULE_OF_DAY_REPORT (1*:M**)* - A business generates daily schedules, each belonging to one business.
+BUSINESS → SCHEDULE_OF_DAY_REPORT (1:M) - A business generates daily schedules, each belonging to one business.
 
-BUSINESS → END_OF_DAY_REPORT (1*:M**)* - A business generates multiple end-of-day reports.
+BUSINESS → END_OF_DAY_REPORT (1:M) - A business generates multiple end-of-day reports.
 
-BUSINESS → SUPPLIES AND EQUIPMENT (1*:M**)* - A business orders multiple supplies, but each supply belongs to one business.
+BUSINESS → SUPPLIES AND EQUIPMENT (1:M) - A business orders multiple supplies, but each supply belongs to one business.
 
-BUSINESS → LOAN (1*:M**)* - A business can take multiple loans, but each loan is for one business.
+BUSINESS → LOAN (1:M) - A business can take multiple loans, but each loan is for one business.
 
-BUSINESS → PATIENT (1*:M**)* - A business serves multiple patients, but each patient is associated with one business.
+BUSINESS → PATIENT (1:M) - A business serves multiple patients, but each patient is associated with one business.
 
-BUSINESS → INSURANCE_PROVIDER (M*:M** via INSURANCE)* - A business works with multiple insurance providers, and vice versa.
+BUSINESS → INSURANCE_PROVIDER (M:M via INSURANCE) - A business works with multiple insurance providers, and vice versa.
 
-BUSINESS → PATIENT_BILLING_RECORD (1*:M**)* - A business generates multiple patient billing records.
+BUSINESS → PATIENT_BILLING_RECORD (1:M) - A business generates multiple patient billing records.
 
-BUSINESS → MONTHLY_INCOME (1*:M**)* - A business generates multiple streams of income.
+BUSINESS → MONTHLY_INCOME (1:M) - A business generates multiple streams of income.
 
-STAFF → LICENSE (1*:M**)* - Each staff holds multiple licenses, but each license belongs to one staff.
+STAFF → LICENSE (1:M) - Each staff holds multiple licenses, but each license belongs to one staff.
 
-STAFF → ROOM (M*:M** via ROOM_ASSIGNMENT)* - Staff are assigned to multiple rooms, and rooms host multiple staff.
+STAFF → ROOM (M:M via ROOM_ASSIGNMENT) - Staff are assigned to multiple rooms, and rooms host multiple staff.
 
-STAFF → APPOINTMENT (1*:M**)* - Staff schedule multiple appointments, but each appointment is scheduled by one staff.
+STAFF → APPOINTMENT (1:M) - Staff schedule multiple appointments, but each appointment is scheduled by one staff.
 
 STAFF → SERVICE (M:1) - Each staff performs only one service, but multiple staff may perform the same service.
 
-STAFF → PATIENT (M*:M** via TREATMENT_RECORD)* - Staff treat multiple patients, and patients are treated by multiple staff.
+STAFF → PATIENT (M:M via TREATMENT_RECORD) - Staff treat multiple patients, and patients are treated by multiple staff.
 
-STAFF → MONTHLY_SALARY (1*:M**)* - Each staff receives multiple monthly salaries over time.
+STAFF → MONTHLY_SALARY (1:M) - Each staff receives multiple monthly salaries over time.
 
-BANK → LOAN (1*:M**, Optional)* - A bank may issue multiple loans, but each loan comes from only one bank.
+BANK → LOAN (1:M, Optional) - A bank may issue multiple loans, but each loan comes from only one bank.
 
-ROOM → STAFF (M*:M** via ROOM_ASSIGNMENT)* - Each room hosts multiple staff, and staff work in multiple rooms.
+ROOM → STAFF (M:M via ROOM_ASSIGNMENT) - Each room hosts multiple staff, and staff work in multiple rooms.
 
-ROOM → APPOINTMENT (1*:M**)* - Each room hosts multiple appointments, but each appointment takes place in only one room.
+ROOM → APPOINTMENT (1:M) - Each room hosts multiple appointments, but each appointment takes place in only one room.
 
-ROOM → SERVICE (M*:M** via SUPPLY_SERVICE_ROOM)* - Each room is prepared for multiple services, and services can be performed in multiple rooms.
+ROOM → SERVICE (M:M via SUPPLY_SERVICE_ROOM) - Each room is prepared for multiple services, and services can be performed in multiple rooms.
 
-PATIENT → APPOINTMENT (1*:M**)* - Each patient books multiple appointments, but each appointment is for one patient.
+PATIENT → APPOINTMENT (1:M) - Each patient books multiple appointments, but each appointment is for one patient.
 
 PATIENT → MEDICAL_RECORD (1:1) - Each patient has one medical record.
 
-PATIENT → INSURANCE (M*:M** via INSURANCE_COVERAGE, Optional)* - Each patient may have multiple insurances, and each insurance covers multiple patients.
+PATIENT → INSURANCE (M:M via INSURANCE_COVERAGE, Optional) - Each patient may have multiple insurances, and each insurance covers multiple patients.
 
-PATIENT → PATIENT_BILLING_RECORD (1*:M**)* - Each patient has multiple billing records, but each billing record belongs to only one patient.
+PATIENT → PATIENT_BILLING_RECORD (1:M) - Each patient has multiple billing records, but each billing record belongs to only one patient.
 
-PATIENT → SERVICE (M*:M** via TREATMENT_RECORD)* - Each patient undergoes multiple services, and each service is performed on multiple patients.
+PATIENT → SERVICE (M:M via TREATMENT_RECORD) - Each patient undergoes multiple services, and each service is performed on multiple patients.
 
-APPOINTMENT → SERVICE (M*:M** via APPOINTMENT_SERVICE)* - Each appointment includes multiple services, and each service appears in multiple appointments.
+APPOINTMENT → SERVICE (M:M via APPOINTMENT_SERVICE) - Each appointment includes multiple services, and each service appears in multiple appointments.
 
 APPOINTMENT → PATIENT_BILLING_RECORD (1:1) - Each appointment generates one patient billing record.
 
-APPOINTMENT → SCHEDULE_OF_DAY_REPORT (1*:M**)* - Each appointment appears in one daily schedule, but each daily schedule contains multiple appointments.
+APPOINTMENT → SCHEDULE_OF_DAY_REPORT (1:M) - Each appointment appears in one daily schedule, but each daily schedule contains multiple appointments.
 
-PATIENT_MEDICAL_RECORD → TREATMENT_RECORD (1*:M**)* - Each medical record consists of multiple treatment records.
+PATIENT_MEDICAL_RECORD → TREATMENT_RECORD (1:M) - Each medical record consists of multiple treatment records.
 
-PATIENT_MEDICAL_RECORD → STAFF (M*:M** via TREATMENT_RECORD)* - Each patient medical record is processed by multiple staff, and each staff processes multiple patient records.
+PATIENT_MEDICAL_RECORD → STAFF (M:M via TREATMENT_RECORD) - Each patient medical record is processed by multiple staff, and each staff processes multiple patient records.
 
-PATIENT_BILLING_RECORD → SERVICE (M*:M** via BILLING_SERVICE_DETAILS)* - Each patient billing record includes multiple services, and each service appears in multiple billing records.
+PATIENT_BILLING_RECORD → SERVICE (M:M via BILLING_SERVICE_DETAILS) - Each patient billing record includes multiple services, and each service appears in multiple billing records.
 
-PATIENT_BILLING_RECORD → INSURANCE (M*:M** via INSURANCE_PAYMENT, Optional)* - Each patient billing record may be paid by multiple insurances, but insurance payment is optional.
+PATIENT_BILLING_RECORD → INSURANCE (M:M via INSURANCE_PAYMENT, Optional) - Each patient billing record may be paid by multiple insurances, but insurance payment is optional.
 
-PATIENT_BILLING_RECORD → END_OF_DAY_REPORT (1*:M**)* - Each billing record contributes to only one end-of-day report, but each end-of-day report consists of multiple billing records.
+PATIENT_BILLING_RECORD → END_OF_DAY_REPORT (1:M) - Each billing record contributes to only one end-of-day report, but each end-of-day report consists of multiple billing records.
 
-INSURANCE → PATIENT (M*:M** via INSURANCE_COVERAGE, Optional)* - Each insurance policy may cover multiple patients, and each patient may have multiple insurance policies.
+INSURANCE → PATIENT (M:M via INSURANCE_COVERAGE, Optional) - Each insurance policy may cover multiple patients, and each patient may have multiple insurance policies.
 
-INSURANCE_PROVIDER → INSURANCE (1*:M**)* - Each insurance provider offers multiple insurance policies, but each policy is issued by one provider.
+INSURANCE_PROVIDER → INSURANCE (1:M) - Each insurance provider offers multiple insurance policies, but each policy is issued by one provider.
 
-SERVICE → SUPPLIES & EQUIPMENT (M*:M** via SUPPLY_SERVICE_ROOM)* - Each service requires multiple supplies and equipment, and each supply/equipment is used in multiple services.
+SERVICE → SUPPLIES & EQUIPMENT (M:M via SUPPLY_SERVICE_ROOM) - Each service requires multiple supplies and equipment, and each supply/equipment is used in multiple services.
 
-SERVICE → END_OF_DAY_REPORT (M*:M** via DAILY_SERVICE_REPORT)* - Each service appears in multiple end-of-day reports, and each end-of-day report includes multiple services.
+SERVICE → END_OF_DAY_REPORT (M:M via DAILY_SERVICE_REPORT) - Each service appears in multiple end-of-day reports, and each end-of-day report includes multiple services.
 
-SERVICE → MONTHLY_REPORT (M*:M** via MONTHLY_SERVICE_REPORT)* - Each service contributes to multiple monthly reports, and each monthly report includes multiple services.
+SERVICE → MONTHLY_REPORT (M:M via MONTHLY_SERVICE_REPORT) - Each service contributes to multiple monthly reports, and each monthly report includes multiple services.
 
-MONTHLY_SALARY → PATIENT_BILLING_RECORD (M*:M** via MONTHLY_BILLING_RECORD)* - Each monthly salary is funded by multiple patient billing records, and each billing record contributes to multiple salaries.
+MONTHLY_SALARY → PATIENT_BILLING_RECORD (M:M via MONTHLY_BILLING_RECORD) - Each monthly salary is funded by multiple patient billing records, and each billing record contributes to multiple salaries.
 
-MONTHLY_SALARY → MONTHLY_REPORT (1*:M**)* - Each monthly salary appears in one monthly report, but each monthly report contains multiple salaries.
+MONTHLY_SALARY → MONTHLY_REPORT (1:M) - Each monthly salary appears in one monthly report, but each monthly report contains multiple salaries.
 
-MONTHLY_EXPENSES → SUPPLIES & EQUIPMENT (M*:M** via EXPENSE_DETAILS)* - Each monthly expense includes multiple supplies and equipment, and each supply/equipment may appear in multiple expenses.
+MONTHLY_EXPENSES → SUPPLIES & EQUIPMENT (M:M via EXPENSE_DETAILS) - Each monthly expense includes multiple supplies and equipment, and each supply/equipment may appear in multiple expenses.
 
 MONTHLY_EXPENSES → MONTHLY_REPORT (1:1) - Each monthly expenses record appears in only one monthly report.
 
-SUPPLIES & EQUIPMENT → SERVICE (M*:M** via SUPPLY_SERVICE_ROOM)* - Each supply is used in multiple services, and each service requires multiple supplies.
+SUPPLIES & EQUIPMENT → SERVICE (M:M via SUPPLY_SERVICE_ROOM) - Each supply is used in multiple services, and each service requires multiple supplies.
 
-ROOM → SUPPLIES & EQUIPMENT (1*:M**)* - Each room stores multiple supplies and equipment, but each supply is stored in only one room.
+ROOM → SUPPLIES & EQUIPMENT (1:M) - Each room stores multiple supplies and equipment, but each supply is stored in only one room.
 
-SCHEDULE_OF_DAY_REPORT → STAFF (M*:M** via DAILY_STAFF_ASSIGNMENT)* - Each schedule assigns multiple staff for work, and each staff appears in multiple schedules.
+SCHEDULE_OF_DAY_REPORT → STAFF (M:M via DAILY_STAFF_ASSIGNMENT) - Each schedule assigns multiple staff for work, and each staff appears in multiple schedules.
 
-END_OF_DAY_REPORT → MONTHLY_REPORT (1*:M**)* - Each end-of-day report contributes to only one monthly report, but each monthly report consists of multiple end-of-day reports.
+END_OF_DAY_REPORT → MONTHLY_REPORT (1:M) - Each end-of-day report contributes to only one monthly report, but each monthly report consists of multiple end-of-day reports.
 
 
 
-6. Conclusion
 
-This ER model ensures efficient management of a dental practice's key functions, covering scheduling, financial transactions, staff allocation, patient care, and insurance processing. The use of bridge entities for many-to-many relationships enhances data integrity, while clear one-to-one and one-to-many relationships ensure streamlined operations.
-
-End of Document
 
