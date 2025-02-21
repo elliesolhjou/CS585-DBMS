@@ -59,35 +59,30 @@ Each patient billing record is associated with one appointment to prevent duplic
 Each room stores multiple supplies, but each supply is assigned to only one room to track resource allocation effectively.
 
 **c. Financial Management Assumptions**
-
-Monthly salaries are funded by patient billing records (linked via the MONTHLY_BILLING_RECORD bridge entity).
-
-Each monthly report aggregates multiple end-of-day reports to maintain financial summaries per month.
-
-Each patient billing record may be paid partially or fully by multiple insurance policies, or it may be paid out-of-pocket.
-
-d. Scheduling and Operations
-
-Each schedule of the day report assigns multiple staff members, ensuring efficient workforce distribution.
-
+Monthly salaries are funded by patient billing records (linked via the MONTHLY_BILLING_RECORD bridge entity). \n
+Each monthly report aggregates multiple end-of-day reports to maintain financial summaries per month.\n
+Each patient billing record may be paid partially or fully by multiple insurance policies or paid out-of-pocket.
+Loan repayment is included in financial tracking: The business has a $300,000 loan to be repaid over 10 years. Each monthly expenditure report includes the loan installment and interest as part of fixed costs.
+Fixed costs are explicitly tracked: Recurring operating costs, such as lease payments, utilities, supplies, equipment maintenance, and staff training, are recorded under MONTHLY_EXPENDITURE.
+**d. Scheduling and Operations**
+Each schedule of the day report assigns multiple staff members, ensuring efficient workforce distribution. It lists all assigned staff, patients, and rooms.
 Each end-of-day report contributes to only one monthly report, preventing duplicate reporting.
-
 Each room appears in multiple daily schedules, ensuring accurate tracking of room usage.
+Patient scheduling states are explicitly tracked: Each patient is assigned a scheduling status, which includes:
+--Contacted (patient has been reached out to but not yet scheduled)
+--Scheduled (appointment confirmed)
+--Recently Visited (patient completed an appointment recently)
+--Up for Next Visit (patient is due for a follow-up)
+--Dormant (patient has not scheduled a visit for a long time)
 
-**3. Assumptions**
-
+**3. Additional Assumptions**
 Each type of service is performed by only one type of staff (e.g., orthodontists perform orthodontic procedures, surgeons perform surgeries, hygienists perform cleanings, etc.).
-
-The supplies and equipment entity includes all costs related to dental operations. It covers everything from startup costs—such as furniture, dental equipment, software for scheduling and billing, supplies, and training—to recurring monthly operating costs, including facilities cleaning, utilities, food in the breakout room, and essential medical items like needles, drugs, and paper towels. Additionally, other monthly operating costs include facilities cleaning, utilities, and food in the breakout room.
-
+Staff licenses are tracked: Every medical professional (hygienists, dentists, specialists) is required to maintain an active license. The LICENSE entity tracks license issuance, expiration, and renewal dates.
+The supplies and equipment entity includes all costs related to dental operations. It covers everything from startup costs—such as furniture, dental equipment, software for scheduling and billing, supplies, and training—to recurring monthly operating costs, including facilities cleaning, utilities, food in the breakout room, and essential medical items like needles, drugs, and paper towels.
 A dental practice operates from one building only.
-
 Each staff member works for only one dental practice at a time.
-
 Insurance coverage is optional for patients (denoted by an O-cross foot notation in the ER diagram).
-
 Each service requires specific supplies and equipment and cannot be performed without them.
-
 Each treatment is recorded individually in the patient’s medical record.
 
 **4. Naming Conventions**
@@ -139,6 +134,11 @@ Below are the relationships along with their justifications as provided:**
 **STAFF → MONTHLY_SALARY (1:M)** - Each staff receives multiple monthly salaries over time.
 
 **BANK → LOAN (1:M, Optional)** - A bank may issue multiple loans, but each loan comes from only one bank.
+
+**LOAN → MONTHLY_EXPENSES (1:M)** - A loon appears on multiple monthly expenses since business have loan repaymengt on monthly bases, but each monthly_expenses refers to exactly one loan.
+
+**BUILDING → MONTHLY_EXPENSES(1:M)** -  A building incurs multiple monthly lease expenses, but each lease expense is associated with only one building
+**BUILDING → ROOM (1:M, Optional)** - A building might have zero or several rooms, but each room belongs exactly to only one building.
 
 **ROOM → STAFF (M:M via ROOM_ASSIGNMENT)** - Each room hosts multiple staff, and staff work in multiple rooms.
 
