@@ -58,32 +58,32 @@ Each patient billing record is associated with one appointment to prevent duplic
 
 Each room stores multiple supplies, but each supply is assigned to only one room to track resource allocation effectively.
 
-**c. Financial Management Assumptions**
-Monthly salaries are funded by patient billing records (linked via the MONTHLY_BILLING_RECORD bridge entity). \n
-Each monthly report aggregates multiple end-of-day reports to maintain financial summaries per month.\n
-Each patient billing record may be paid partially or fully by multiple insurance policies or paid out-of-pocket.
-Loan repayment is included in financial tracking: The business has a $300,000 loan to be repaid over 10 years. Each monthly expenditure report includes the loan installment and interest as part of fixed costs.
-Fixed costs are explicitly tracked: Recurring operating costs, such as lease payments, utilities, supplies, equipment maintenance, and staff training, are recorded under MONTHLY_EXPENDITURE.
-**d. Scheduling and Operations**
-Each schedule of the day report assigns multiple staff members, ensuring efficient workforce distribution. It lists all assigned staff, patients, and rooms.
-Each end-of-day report contributes to only one monthly report, preventing duplicate reporting.
-Each room appears in multiple daily schedules, ensuring accurate tracking of room usage.
-Patient scheduling states are explicitly tracked: Each patient is assigned a scheduling status, which includes:
---Contacted (patient has been reached out to but not yet scheduled)
---Scheduled (appointment confirmed)
---Recently Visited (patient completed an appointment recently)
---Up for Next Visit (patient is due for a follow-up)
---Dormant (patient has not scheduled a visit for a long time)
+**c. Financial Management Assumptions**<br>
+Monthly salaries are funded by patient billing records (linked via the MONTHLY_BILLING_RECORD bridge entity).<br>
+Each monthly report aggregates multiple end-of-day reports to maintain financial summaries per month.<br>
+Each patient billing record may be paid partially or fully by multiple insurance policies or paid out-of-pocket.<br>
+Loan repayment is included in financial tracking: The business has a $300,000 loan to be repaid over 10 years. Each monthlY expenses report includes the loan installment and interest as part of fixed costs.<br>
+Fixed costs are explicitly tracked: Recurring operating costs, such as lease payments, utilities, supplies, equipment maintenance, and staff training, are recorded under MONTHLY_EXPENSES.<br>
+**d. Scheduling and Operations**<br>
+Each schedule of the day report assigns multiple staff members, ensuring efficient workforce distribution. It lists all assigned staff, patients, and rooms.<br>
+Each end-of-day report contributes to only one monthly report, preventing duplicate reporting.<br>
+Each room appears in multiple daily schedules, ensuring accurate tracking of room usage.<br>
+Patient scheduling states are explicitly tracked: Each patient is assigned a scheduling status, which includes:<br>
+--Contacted (patient has been reached out to but not yet scheduled)<br>
+--Scheduled (appointment confirmed)<br>
+--Recently Visited (patient completed an appointment recently)<br>
+--Up for Next Visit (patient is due for a follow-up)<br>
+--Dormant (patient has not scheduled a visit for a long time)<br>
 
-**3. Additional Assumptions**
-Each type of service is performed by only one type of staff (e.g., orthodontists perform orthodontic procedures, surgeons perform surgeries, hygienists perform cleanings, etc.).
-Staff licenses are tracked: Every medical professional (hygienists, dentists, specialists) is required to maintain an active license. The LICENSE entity tracks license issuance, expiration, and renewal dates.
-The supplies and equipment entity includes all costs related to dental operations. It covers everything from startup costs—such as furniture, dental equipment, software for scheduling and billing, supplies, and training—to recurring monthly operating costs, including facilities cleaning, utilities, food in the breakout room, and essential medical items like needles, drugs, and paper towels.
-A dental practice operates from one building only.
-Each staff member works for only one dental practice at a time.
-Insurance coverage is optional for patients (denoted by an O-cross foot notation in the ER diagram).
-Each service requires specific supplies and equipment and cannot be performed without them.
-Each treatment is recorded individually in the patient’s medical record.
+**3. Additional Assumptions**<br>
+Each type of service is performed by only one type of staff (e.g., orthodontists perform orthodontic procedures, surgeons perform surgeries, hygienists perform cleanings, etc.).<br>
+Staff licenses are tracked: Every medical professional (hygienists, dentists, specialists) is required to maintain an active license. The LICENSE entity tracks license issuance, expiration, and renewal dates.<br>
+The supplies and equipment entity includes all costs related to dental operations. It covers everything from startup costs—such as furniture, dental equipment, software for scheduling and billing, supplies, and training—to recurring monthly operating costs, including facilities cleaning, utilities, food in the breakout room, and essential medical items like needles, drugs, and paper towels.<br>
+A dental practice operates from one building only.<br>
+Each staff member works for only one dental practice at a time.<br>
+Insurance coverage is optional for patients (denoted by an O-cross foot notation in the ER diagram).<br>
+Each service requires specific supplies and equipment and cannot be performed without them.<br>
+Each treatment is recorded individually in the patient’s medical record.<br>
 
 **4. Naming Conventions**
 
