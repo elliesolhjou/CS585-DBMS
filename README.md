@@ -68,7 +68,22 @@ Each patient billing record may be paid partially or fully by multiple insurance
 
 Loan repayment is included in financial tracking: The business has a $300,000 loan to be repaid over 10 years. Each monthlY expenses report includes the loan installment and interest as part of fixed costs.<br>
 
-Fixed costs are explicitly tracked: Recurring operating costs, such as lease payments, utilities, supplies, equipment maintenance, and staff training, are recorded under MONTHLY_EXPENSES.<br>
+The supplies and equipment entity includes all costs related to dental operations. It covers everything from startup costs—such as furniture, dental equipment, software for scheduling and billing, supplies, and training—to recurring monthly operating costs, including facilities cleaning, utilities, food in the breakout room, and essential medical items like needles, drugs, and paper towels.<br>
+
+The monthly report provides a high-level financial and operational summary of the dental practice to help business owners assess profitability and business performance. This report includes aggregated income, expenses, and key patient metrics to support informed decision-making.
+
+The monthly report is linked to the business entity, ensuring that each report is 
+generated specifically for a given business.
+
+All expenses are aggregated and tracked separately in the MONTHLY_EXPENSES entity, which includes staff salaries, lease payments, loan installments, supply purchases, and utility costs. The TOTAL_EXPENSES field in the monthly report reflects the sum of all costs recorded in MONTHLY_EXPENSES for that month.
+
+Revenue is calculated from patient billing records, which include both insurance reimbursements and direct patient payments.
+
+Profitability is determined by calculating NET_PROFIT_LOSS = TOTAL_REVENUE - TOTAL_EXPENSES.
+
+Key operational insights are included, such as the total number of patients served, new patients acquired, and the number of insurance claims processed.
+
+Insurance payments are explicitly tracked, distinguishing between total insurance payments and out-of-pocket payments to provide a clear breakdown of revenue sources.
 
 **d. Scheduling and Operations**<br>
 
@@ -95,7 +110,6 @@ Each type of service is performed by only one type of staff (e.g., orthodontists
 
 Staff licenses are tracked: Every medical professional (hygienists, dentists, specialists) is required to maintain an active license. The LICENSE entity tracks license issuance, expiration, and renewal dates.<br>
 
-The supplies and equipment entity includes all costs related to dental operations. It covers everything from startup costs—such as furniture, dental equipment, software for scheduling and billing, supplies, and training—to recurring monthly operating costs, including facilities cleaning, utilities, food in the breakout room, and essential medical items like needles, drugs, and paper towels.<br>
 
 A dental practice operates from one building only.<br>
 
@@ -160,7 +174,6 @@ Below are the relationships along with their justifications as provided:**
 **LOAN → MONTHLY_EXPENSES (1:M)** - A loon appears on multiple monthly expenses since business have loan repaymengt on monthly bases, but each monthly_expenses refers to exactly one loan.
 
 **BUILDING → MONTHLY_EXPENSES(1:M)** -  A building incurs multiple monthly lease expenses, but each lease expense is associated with only one building
-
 **BUILDING → ROOM (1:M, Optional)** - A building might have zero or several rooms, but each room belongs exactly to only one building.
 
 **ROOM → STAFF (M:M via ROOM_ASSIGNMENT)** - Each room hosts multiple staff, and staff work in multiple rooms.
