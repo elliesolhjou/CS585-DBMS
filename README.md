@@ -1,5 +1,7 @@
 # CS585-DBMS
 
+HW1 - Ellie Solhjou
+
 README - Dental Practice Database Design
 
 1. Overview
