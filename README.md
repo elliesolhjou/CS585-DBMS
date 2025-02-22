@@ -44,7 +44,21 @@ _(Include an image of the ER diagram here or provide a link.)_
 
 ---
 
-## 4️⃣ Financial & Operational Assumptions
+## 4️⃣ General Assumptions
+
+- Business entity refers to the dental practice.
+- Each **type of service** is performed by only **one type of staff** (e.g., **hygienists perform cleanings**, **orthodontists perform braces**).  Each **type of service** is performed by only **one type of staff** (e.g., **hygienists perform cleanings**, **orthodontists perform braces**).  
+- **Staff licenses are tracked**: The `LICENSE` entity records **issuance, expiration, and renewal dates**.  
+- **A building can be leased only by one business.**  
+- **A dental practice operates from one building only.**  
+- **Each staff member works for only one dental practice at a time.**  
+- **Insurance coverage is optional for patients** (denoted by an **O-cross foot notation in the ER diagram**).  
+- **Each service requires specific supplies and equipment** and **cannot be performed without them**.  
+- **Each treatment is recorded individually** in the `PATIENT_MEDICAL_RECORD` entity.
+
+---
+ 
+## 5️⃣ Financial & Operational Assumptions
 
 - **Monthly salaries** are funded by **patient billing records**, which are linked via the `MONTHLY_BILLING_RECORD` bridge entity.  
 - Each **monthly report** aggregates multiple **end-of-day reports** to provide **financial summaries**.  
@@ -67,7 +81,7 @@ _(Include an image of the ER diagram here or provide a link.)_
 ---
 
 
-## 5️⃣ Scheduling & Operations Assumptions
+## 6️⃣ Scheduling & Operations Assumptions
 
 - Each **schedule of the day report** assigns **multiple staff members** and **lists assigned staff, patients, and rooms**.  
 - Each **end-of-day report** contributes to **only one monthly report**, preventing duplicate reporting.  
@@ -81,7 +95,7 @@ _(Include an image of the ER diagram here or provide a link.)_
 
 ---
 
-## 6️⃣ Relationships & Justifications
+## 7️⃣ Relationships & Justifications
 
 | **Entities** | **Relationship** | **Justification** |
 |-------------|-----------------|------------------|
@@ -132,18 +146,6 @@ _(Include an image of the ER diagram here or provide a link.)_
 | `MONTHLY_EXPENSES → MONTHLY_REPORT` | `1:1` | Each monthly expenses record appears in only one monthly report. Each monthly report contributes to one monthly expenses report. |
 | `MONTHLY_REPORT → END_OF_DAY_REPORT` | `1:M` | Each end-of-day report contributes to only one monthly report, but each monthly report consists of multiple end-of-day reports. |
 
----
-
-## 7️⃣ Additional Assumptions
-
-- Each **type of service** is performed by only **one type of staff** (e.g., **hygienists perform cleanings**, **orthodontists perform braces**).  
-- **Staff licenses are tracked**: The `LICENSE` entity records **issuance, expiration, and renewal dates**.  
-- **A building can be leased only by one business.**  
-- **A dental practice operates from one building only.**  
-- **Each staff member works for only one dental practice at a time.**  
-- **Insurance coverage is optional for patients** (denoted by an **O-cross foot notation in the ER diagram**).  
-- **Each service requires specific supplies and equipment** and **cannot be performed without them**.  
-- **Each treatment is recorded individually** in the `PATIENT_MEDICAL_RECORD` entity.  
 
 ---
 
