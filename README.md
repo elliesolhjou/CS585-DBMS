@@ -229,7 +229,7 @@ Below are the relationships along with their justifications as provided:**
 
 **SCHEDULE_OF_DAY_REPORT → STAFF (M:M via DAILY_STAFF_ASSIGNMENT)** - Each schedule assigns multiple staff for work, and each staff appears in multiple schedules.
 
-**END_OF_DAY_REPORT → MONTHLY_REPORT (1:M)** - Each end-of-day report contributes to only one monthly report, but each monthly report consists of multiple end-of-day reports.
+**MONTHLY_REPORT → END_OF_DAY_REPORT  (1:M)** - Each end-of-day report contributes to only one monthly report, but each monthly report consists of multiple end-of-day reports.
 
 
 
