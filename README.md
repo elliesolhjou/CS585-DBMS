@@ -221,7 +221,7 @@ Below are the relationships along with their justifications as provided:**
 
 **MONTHLY_EXPENSES → SUPPLIES & EQUIPMENT (M:M via EXPENSE_DETAILS)** - Each monthly expense includes multiple supplies and equipment, and each supply/equipment may appear in multiple expenses.
 
-**MONTHLY_EXPENSES → MONTHLY_REPORT (1:1)** - Each monthly expenses record appears in only one monthly report.
+**MONTHLY_EXPENSES → MONTHLY_REPORT (1:1)** - Each monthly expenses record appears in only one monthly report. Each monthly report contributes to one monthly expenses report.
 
 **SUPPLIES & EQUIPMENT → SERVICE (M:M via SUPPLY_SERVICE_ROOM)** - Each supply is used in multiple services, and each service requires multiple supplies.
 
