@@ -197,8 +197,6 @@ Below are the relationships along with their justifications as provided:**
 
 **APPOINTMENT → SCHEDULE_OF_DAY_REPORT (1:M)** - Each appointment appears in one daily schedule, but each daily schedule contains multiple appointments.
 
-**PATIENT_MEDICAL_RECORD → TREATMENT_RECORD (1:M)** - Each medical record consists of multiple treatment records.
-
 **PATIENT_MEDICAL_RECORD → STAFF (M:M via TREATMENT_RECORD)** - Each patient medical record is processed by multiple staff, and each staff processes multiple patient records.
 
 **PATIENT_BILLING_RECORD → SERVICE (M:M via BILLING_SERVICE_DETAILS)** - Each patient billing record includes multiple services, and each service appears in multiple billing records.
