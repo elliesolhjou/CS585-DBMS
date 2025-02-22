@@ -1,3 +1,7 @@
+
+**missing SCHEDULE_OF_DAY_REPORT relationships and other _. has to be checked
+
+
 # Dental Practice Database Design
 
 **Author:** Ellie Solhjou  
