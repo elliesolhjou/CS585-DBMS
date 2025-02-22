@@ -83,8 +83,6 @@ _(Include an image of the ER diagram here or provide a link.)_
 
 ## 6️⃣ Relationships & Justifications
 
-## 7️⃣  Relationships & Justifications
-
 | **Entities** | **Relationship** | **Justification** |
 |-------------|-----------------|------------------|
 | `BUSINESS → STAFF` | `1:M` | A business employs multiple staff members, but each staff works for only one business. |
@@ -136,7 +134,7 @@ _(Include an image of the ER diagram here or provide a link.)_
 
 ---
 
-## 8️⃣ Additional Assumptions
+## 7️⃣ Additional Assumptions
 
 - Each **type of service** is performed by only **one type of staff** (e.g., **hygienists perform cleanings**, **orthodontists perform braces**).  
 - **Staff licenses are tracked**: The `LICENSE` entity records **issuance, expiration, and renewal dates**.  
