@@ -10,48 +10,9 @@
 This document describes the **Entity-Relationship (ER) model** for a dental practice management system. It provides a structured approach to managing **patient care, staff scheduling, financial tracking, billing, insurance claims, and medical records**. 
 ---
 
-## 2️⃣ Design Principles
+## 2️⃣ Design Principles## 
 
-### ✅ Key Functional Areas
-- **Patient Management:** Tracks **appointments, medical records, and billing**.
-- **Staff Management:** Handles **scheduling, salaries, and licensing**.
-- **Financial Management:** Aggregates **income, expenses, and insurance claims**.
-- **Operations Management:** Assigns **rooms, equipment, and services to appointments**.
-
----
-
-## 3️⃣ Database Schema & ER Diagram
-
-### 📌 ER Diagram  
-_(Include an image of the ER diagram here or provide a link.)_
-
----
-
-## 4️⃣ Financial & Operational Assumptions
-
-- **Monthly salaries** are funded by **patient billing records**, which are linked via the `MONTHLY_BILLING_RECORD` bridge entity.  
-- Each **monthly report** aggregates multiple **end-of-day reports** to provide **financial summaries**.  
-- **Each patient billing record** may be paid **partially or fully** by **multiple insurance policies** or **out-of-pocket**.  
-- **Loan repayment** is included in financial tracking. The business has a **$300,000 loan** repaid over **10 years**, and each `MONTHLY_EXPENSES` report includes **loan installments and interest** as part of fixed costs.  
-- The `SUPPLIES & EQUIPMENT` entity includes all **costs related to dental operations**, covering:
-  - **Startup costs**: furniture, dental equipment, scheduling & billing software, supplies, and training.  
-  - **Recurring monthly costs**: cleaning services, utilities, staff food, medical supplies (needles, drugs, paper towels, etc.).  
-- The **monthly report** provides a **high-level financial and operational summary** of the dental practice, allowing business owners to assess **profitability and performance**.  
-- **All expenses** are **aggregated in `MONTHLY_EXPENSES`**, which includes **staff salaries, lease payments, loan installments, supply purchases, and utility costs**. The `TOTAL_EXPENSES` field in the monthly report represents the **sum of all costs recorded in `MONTHLY_EXPENSES`** for that month.  
-- **Revenue** is calculated from **patient billing records**, including both **insurance reimbursements** and **direct patient payments**.  
-- **Profitability** is determined as:  
-  `NET_PROFIT_LOSS = TOTAL_REVENUE - TOTAL_EXPENSES`  
-- **Key operational insights** included in the report:
-  - **Total number of patients served**
-  - **New patient acquisitions**
-  - **Total insurance claims processed**  
-- **Insurance payments** are explicitly tracked, distinguishing between **total insurance payments** and **out-of-pocket payments**, providing a **clear breakdown of revenue sources**.
-
----
-
-## 5️⃣ Bridge Entities (Many-to-Many Relationships)
-
-To maintain **normalization and scalability**, the following **bridge entities** have been implemented to manage **Many-to-Many (M:M) relationships** effectively.
+The following bridge entities have been implemented to manage many-to-many  relationships effectively:**
 
 ### ✅ Insurance & Billing
 - **INSURANCE_COVERAGE**: Links patients to their respective insurance policies.  
@@ -75,7 +36,38 @@ To maintain **normalization and scalability**, the following **bridge entities**
 
 ---
 
-## 6️⃣ Scheduling & Operations Assumptions
+
+## 3️⃣ Database Schema & ER Diagram
+
+### 📌 ER Diagram  
+_(Include an image of the ER diagram here or provide a link.)_
+
+---
+
+## 4️⃣ Financial & Operational Assumptions
+
+- **Monthly salaries** are funded by **patient billing records**, which are linked via the `MONTHLY_BILLING_RECORD` bridge entity.  
+- Each **monthly report** aggregates multiple **end-of-day reports** to provide **financial summaries**.  
+- **Each patient billing record** may be paid **partially or fully** by **multiple insurance policies** or **out-of-pocket**.  
+- **Loan repayment** is included in financial tracking. The business has a **$300,000 loan** repaid over **10 years**, and each `MONTHLY_EXPENSES` report includes **loan installments and interest** as part of fixed costs.  
+- The `SUPPLIES & EQUIPMENT` entity includes all **costs related to dental operations**, covering:
+  - **Startup costs**: furniture, dental equipment, scheduling & billing software, supplies, and training.  
+  - **Recurring monthly costs**: cleaning services, utilities, staff food, medical supplies (needles, drugs, paper towels, etc.).  
+- The **monthly report** provides a **high-level financial and operational summary** of the dental practice, allowing business owners to assess **profitability and performance**.  
+- **All expenses** are **aggregated in `MONTHLY_EXPENSES`**, which includes **staff salaries, lease payments, loan installments, supply purchases, and utility costs**. The `TOTAL_EXPENSES` field in the monthly report represents the **sum of all costs recorded in `MONTHLY_EXPENSES`** for that month.  
+- **Revenue** is calculated from **patient billing records**, including both **insurance reimbursements** and **direct patient payments**.  
+- **Profitability** is determined as:  
+  `NET_PROFIT_LOSS = TOTAL_REVENUE - TOTAL_EXPENSES`  
+- **Key operational insights** included in the monthly report:
+  - **Total number of patients served**
+  - **New patient acquisitions**
+  - **Total insurance claims processed**  
+- **Insurance payments** are explicitly tracked, distinguishing between **total insurance payments** and **out-of-pocket payments**, providing a **clear breakdown of revenue sources**.
+
+---
+
+
+## 5️⃣ Scheduling & Operations Assumptions
 
 - Each **schedule of the day report** assigns **multiple staff members** and **lists assigned staff, patients, and rooms**.  
 - Each **end-of-day report** contributes to **only one monthly report**, preventing duplicate reporting.  
@@ -89,9 +81,9 @@ To maintain **normalization and scalability**, the following **bridge entities**
 
 ---
 
-## 7️⃣ Relationships & Justifications
+## 6️⃣ Relationships & Justifications
 
-## 5️⃣ Relationships & Justifications
+## 7️⃣  Relationships & Justifications
 
 | **Entities** | **Relationship** | **Justification** |
 |-------------|-----------------|------------------|
