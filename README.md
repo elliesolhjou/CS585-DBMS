@@ -133,7 +133,7 @@ All entity names and bridge entities are in uppercase for consistency in documen
 
 Below are the relationships along with their justifications as provided:**
 
-**DENTAL PRACTICE → STAFF (1:M)** - A business employs multiple staff members, but each staff works for only one business.
+**BUSINESS → STAFF (1:M)** - A business employs multiple staff members, but each staff works for only one business.
 
 **BUSINESS → BUILDING (1:1)** - A business leases only one building.
 
