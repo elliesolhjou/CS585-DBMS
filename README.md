@@ -174,9 +174,8 @@ Below are the relationships along with their justifications as provided:**
 **LOAN → MONTHLY_EXPENSES (1:M)** - A loon appears on multiple monthly expenses since business have loan repaymengt on monthly bases, but each monthly_expenses refers to exactly one loan.
 
 **BUILDING → MONTHLY_EXPENSES(1:M)** -  A building incurs multiple monthly lease expenses, but each lease expense is associated with only one building
-**BUILDING → ROOM (1:M, Optional)** - A building might have zero or several rooms, but each room belongs exactly to only one building.
 
-**ROOM → STAFF (M:M via ROOM_ASSIGNMENT)** - Each room hosts multiple staff, and staff work in multiple rooms.
+**BUILDING → ROOM (1:M, Optional)** - A building might have zero or several rooms, but each room belongs exactly to only one building.
 
 **ROOM → APPOINTMENT (1:M)** - Each room hosts multiple appointments, but each appointment takes place in only one room.
 
