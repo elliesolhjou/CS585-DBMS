@@ -110,6 +110,7 @@ Each type of service is performed by only one type of staff (e.g., orthodontists
 
 Staff licenses are tracked: Every medical professional (hygienists, dentists, specialists) is required to maintain an active license. The LICENSE entity tracks license issuance, expiration, and renewal dates.<br>
 
+A building can be leased only by one business.
 
 A dental practice operates from one building only.<br>
 
@@ -122,6 +123,8 @@ Each service requires specific supplies and equipment and cannot be performed wi
 Each treatment is recorded individually in the patient’s medical record.<br>
 
 **4. Naming Conventions**
+
+Business entity referes to the dental practice.
 
 Entity names are in singular form (e.g., PATIENT, STAFF, ROOM) for clarity.
 
